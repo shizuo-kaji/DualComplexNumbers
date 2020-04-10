@@ -1,3 +1,6 @@
+//
+//  DCN.h
+//
 /**
  * @file    Library for Dual Complex Numbers
  * @author  Shizuo KAJI <shizuo.kaji@gmail.com>
@@ -9,6 +12,7 @@
  * For the detail, look at
  * G. Matsuda, S. Kaji, and H. Ochiai, Anti-commutative Dual Complex Numbers and 2D Rigid Transformation,
  * Mathematical Progress in Expressive Image Synthesis I, Springer-Japan, 2014.
+ * http://arxiv.org/abs/1601.01754
 */
 
 #pragma once
@@ -47,14 +51,14 @@ public:
      @param theta the degree in radian of the rotation
      */
     DCN(T x, T y, T theta){
-        DCN v(cos(theta/2.0),sin(theta/2.0),0,0);
-        DCN u(1,0,-x/2.0,-y/2.0);
-        DCN w(1,0,x/2.0,y/2.0);
-        DCN result = w*v*u;
-        real[0] = result.real[0];
-        real[1] = result.real[1];
-        dual[0] = result.dual[0];
-        dual[1] = result.dual[1];
+//        DCN v(cos(theta/2.0),sin(theta/2.0),0,0);
+//        DCN u(1,0,-x/2.0,-y/2.0);
+//        DCN w(1,0,x/2.0,y/2.0);
+//        DCN result = w*v*u;
+        real[0] = cos(theta/2.0);
+        real[1] = sin(theta/2.0);
+        dual[0] = sin(theta/2.0)*y;
+        dual[1] = -sin(theta/2.0)*x;
     }
     /// print the contents of the DCN in a human readable form to stdout
 	void print(){
